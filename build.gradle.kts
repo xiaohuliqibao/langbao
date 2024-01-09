@@ -41,6 +41,9 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
+	// https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2
+	implementation("com.alibaba.fastjson2:fastjson2-kotlin:2.0.45")
+
 }
 
 tasks.withType<KotlinCompile> {
