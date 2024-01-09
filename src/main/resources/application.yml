@@ -1,0 +1,24 @@
+#spring:
+#  redis:
+#    host: kagerou.top
+#    port: 9379
+#    password: Xiaohuli7b@o!
+#    timeout: 60000
+#  datasource:
+#    url: jdbc:mysql://xiaohuliqibao.mysql.cn-chengdu.rds.aliyuncs.com:3306/langbao?useUnicode=true&characterEncoding=UTF-8
+#    username: qibao
+#    password: Xiaohuli7bao!
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql=true: true
+#  servlet:
+#    multipart:
+#      max-file-size: 30MB
+#      max-request-size: 20MB
+server:
+  port: 9001
+#  servlet:
+#    session:
+#      timeout: P30D

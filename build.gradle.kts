@@ -21,11 +21,17 @@ configurations {
 }
 
 repositories {
-	mavenCentral()
+//	mavenCentral()
+//	maven {
+//		setUrl( "https://maven.aliyun.com/repository/central")
+//		setUrl( "https://maven.aliyun.com/repository/public")
+//	}
+	maven(url = uri("https://maven.aliyun.com/repository/central"))
+	maven(url = uri("https://maven.aliyun.com/repository/public"))
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
+//	implementation("org.springframework.boot:spring-boot-starter-data-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
