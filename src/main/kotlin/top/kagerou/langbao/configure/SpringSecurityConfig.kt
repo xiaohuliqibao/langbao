@@ -1,6 +1,5 @@
 package top.kagerou.langbao.configure
 
-import com.sun.tools.javac.jvm.PoolConstant.LoadableConstant.Long
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
