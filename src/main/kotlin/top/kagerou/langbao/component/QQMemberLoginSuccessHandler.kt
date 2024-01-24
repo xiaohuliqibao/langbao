@@ -18,7 +18,7 @@ class QQMemberLoginSuccessHandler : AuthenticationSuccessHandler {
     ) {
         response!!.characterEncoding = "utf-8"
         response.contentType = "text/json;charset=utf-8"
-        val resultResponse: ResultResponse? = ResultResponse.setResultResponse(ResultCode.SUCCESS)
+        val resultResponse: ResultResponse = ResultResponse(ResultCode.SUCCESS.code,ResultCode.SUCCESS.message)
         response.writer.write(JSON.toJSONString(resultResponse))
     }
 }

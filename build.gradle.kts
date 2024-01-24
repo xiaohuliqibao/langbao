@@ -43,6 +43,8 @@ dependencies {
 	testImplementation("org.springframework.security:spring-security-test")
 	// https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2
 	implementation("com.alibaba.fastjson2:fastjson2-kotlin:2.0.45")
+	// https://mvnrepository.com/artifact/com.github.oshi/oshi-core
+	implementation("com.github.oshi:oshi-core:6.4.11")
 
 }
 

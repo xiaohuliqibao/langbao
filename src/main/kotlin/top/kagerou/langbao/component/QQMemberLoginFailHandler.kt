@@ -19,16 +19,16 @@ class QQMemberLoginFailHandler : AuthenticationFailureHandler {
     ) {
         response!!.characterEncoding = "utf-8"
         response.contentType = "text/json;charset=utf-8"
-        var resultResponse: ResultResponse? = null
+        lateinit var resultResponse: ResultResponse
 
         resultResponse = when(exception){
-            is AccountExpiredException -> ResultResponse.setResultResponse(ResultCode.USER_ACCOUNT_EXPIRED)
-            is BadCredentialsException -> ResultResponse.setResultResponse(ResultCode.USER_CREDENTIALS_ERROR)
-            is CredentialsExpiredException -> ResultResponse.setResultResponse(ResultCode.USER_CREDENTIALS_EXPIRED)
-            is DisabledException -> ResultResponse.setResultResponse(ResultCode.USER_ACCOUNT_DISABLE)
-            is LockedException -> ResultResponse.setResultResponse(ResultCode.USER_ACCOUNT_LOCKED)
-            is InternalAuthenticationServiceException -> ResultResponse.setResultResponse(ResultCode.USER_ACCOUNT_NOT_EXIST)
-            else -> ResultResponse.setResultResponse(ResultCode.COMMON_FAIL)
+            is AccountExpiredException -> ResultResponse(ResultCode.USER_ACCOUNT_EXPIRED.code,ResultCode.USER_ACCOUNT_EXPIRED.message)
+            is BadCredentialsException -> ResultResponse(ResultCode.USER_CREDENTIALS_ERROR.code,ResultCode.USER_CREDENTIALS_ERROR.message)
+            is CredentialsExpiredException -> ResultResponse(ResultCode.USER_CREDENTIALS_EXPIRED.code,ResultCode.USER_CREDENTIALS_EXPIRED.message)
+            is DisabledException -> ResultResponse(ResultCode.USER_ACCOUNT_DISABLE.code,ResultCode.USER_ACCOUNT_DISABLE.message)
+            is LockedException -> ResultResponse(ResultCode.USER_ACCOUNT_LOCKED.code,ResultCode.USER_ACCOUNT_LOCKED.message)
+            is InternalAuthenticationServiceException -> ResultResponse(ResultCode.USER_ACCOUNT_NOT_EXIST.code,ResultCode.USER_ACCOUNT_NOT_EXIST.message)
+            else -> ResultResponse(ResultCode.COMMON_FAIL.code,ResultCode.COMMON_FAIL.message)
         }
         response.writer.write(JSON.toJSONString(resultResponse))
     }

@@ -18,7 +18,7 @@ class QQMemberLogoutSuccessHandler : LogoutSuccessHandler {
     ) {
         response!!.characterEncoding = "utf-8"
         response.contentType = "text/json;charset=utf-8"
-        val resultResponse = ResultResponse.setResultResponse(ResultCode.LOGOUT_SUCCESS)
+        val resultResponse = ResultResponse(ResultCode.LOGOUT_SUCCESS.code,ResultCode.LOGOUT_SUCCESS.message)
         response.writer.write(JSON.toJSONString(resultResponse))
     }
 }

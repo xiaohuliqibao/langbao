@@ -1,11 +1,5 @@
 package top.kagerou.langbao.entity
 
-import lombok.AllArgsConstructor
-import lombok.Getter
-
-
-@Getter
-@AllArgsConstructor
 enum class ResultCode(val code: Int, val message: String) {
     SUCCESS(2000, "访问成功"),
     LOGOUT_SUCCESS(2001, "注销成功"),
