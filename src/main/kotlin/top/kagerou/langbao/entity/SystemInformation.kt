@@ -11,11 +11,10 @@ import oshi.util.Util
 import top.kagerou.langbao.entity.systemInfo.Cpu
 import top.kagerou.langbao.entity.systemInfo.Memo
 import top.kagerou.langbao.entity.systemInfo.SysFile
-import top.kagerou.langbao.entity.systemInfo.SysInfo
 import top.kagerou.langbao.util.Arith
 
 
-data class SystemInfomation(val cpu: Cpu = Cpu(), val memo: Memo = Memo(), val sysFiles: MutableList<SysFile> = mutableListOf()){
+data class SystemInformation(val cpu: Cpu = Cpu(), val memo: Memo = Memo(), val sysFiles: MutableList<SysFile> = mutableListOf()){
 
     private var OSHI_WAIT_SECOND: Long = 1000L
     fun copyTo() {

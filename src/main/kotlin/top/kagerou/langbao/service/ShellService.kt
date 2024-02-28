@@ -78,7 +78,6 @@ class ShellService {
         myGameModFile.readLines().stream().filter { it -> it.contains("workshop") }.forEach { item -> modIdList.add(item.split("-")[1]) }
         modIdList.forEach { item -> serverModFile.appendText("ServerModSetup(\"{$item}\") \n") }
         return "服务器Mod文件已更新"
-
     }
 
 }

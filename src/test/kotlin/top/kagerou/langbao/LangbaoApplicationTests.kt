@@ -1,10 +1,11 @@
 package top.kagerou.langbao
 
+import okhttp3.Headers
 import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
 import top.kagerou.langbao.entity.ResultCode
 import top.kagerou.langbao.entity.ResultResponse
-import top.kagerou.langbao.entity.SystemInfomation
+import top.kagerou.langbao.entity.SystemInformation
+import top.kagerou.langbao.util.HttpClientUtil
 import java.io.BufferedReader
 import java.io.File
 
@@ -25,7 +26,7 @@ class LangbaoApplicationTests {
 	@Test
 	fun testSystemInfo(){
 		println("------Test SystemInfo start------")
-		val server = SystemInfomation()
+		val server = SystemInformation()
 		server.copyTo()
 		val cpuNum = server.cpu.cpuNum
 		val used = server.cpu.used
@@ -60,5 +61,18 @@ class LangbaoApplicationTests {
 			file.appendText("$it \n")
 		}
 		println(file.readText())
+	}
+
+	@Test
+	fun getSteamVersion(){
+		val url: String = "https://steamcommunity-a.akamaihd.net/news/newsforapp/v0002/"
+		val param = mutableMapOf<String,String>()
+		param["appid"] = "322330"
+		param["count"] = "5"
+		param["format"] = "json"
+		param["maxlength"] = "10"
+		val headers: Headers = Headers.headersOf("user-agent","Valve/Steam HTTP Client 1.0 (0)","Host","steamcommunity-a.akamaihd.net","Accept","text/html,*/*;q=0.9","accept-encoding", "gzip,identity,*;q=0","accept-charset", "ISO-8859-1,utf-8,*;q=0.7")
+		val respond = HttpClientUtil.getHttpRespondToString(url, param, headers)
+		println(respond)
 	}
 }

@@ -74,7 +74,7 @@ object FileUtils {
     /**
      * 写入文件到指定位置
      *
-     * @param filePath 文件路径
+     * @param path 文件路径
      * @param context  内容
      */
     fun writeInFile(path: String,context: String): String{
@@ -88,7 +88,7 @@ object FileUtils {
      * 根据换行符判断当前的行数，
      * 使用统计来判断当前读取第N行
      *
-     * @param path    待文件
+     * @param path    文件路径
      * @param startLine 读取的开始行数，-1为文件第一行
      * @param endLine 读取的结束行数，-1为文件最后一行
      */

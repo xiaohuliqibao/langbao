@@ -45,6 +45,9 @@ dependencies {
 	implementation("com.alibaba.fastjson2:fastjson2-kotlin:2.0.45")
 	// https://mvnrepository.com/artifact/com.github.oshi/oshi-core
 	implementation("com.github.oshi:oshi-core:6.4.11")
+	// https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+	implementation("com.squareup.okhttp3:okhttp:4.10.0")
+
 
 }
 

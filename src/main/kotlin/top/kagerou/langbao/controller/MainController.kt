@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import top.kagerou.langbao.entity.ResultCode
 import top.kagerou.langbao.entity.ResultResponse
-import top.kagerou.langbao.entity.SystemInfomation
 import top.kagerou.langbao.service.SystemService
 
 
