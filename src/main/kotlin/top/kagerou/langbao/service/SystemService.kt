@@ -50,7 +50,10 @@ class SystemService {
     // todo 启动服务流程为先完全关闭都再启动
     fun dstStartAllService(): Any = ""
     // todo 关闭服务流程
-    fun dstStopAllService(): Any = ""
+    fun dstStopAllService() {
+        DstUtil.stopMaster()
+        DstUtil.stopCave()
+    }
     /**
      * 获取服务器的版本号
      * @return 版本号

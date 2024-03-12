@@ -1,6 +1,10 @@
 package top.kagerou.langbao
 
 import okhttp3.Headers
+import okhttp3.HttpUrl.Companion.toHttpUrl
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import org.json.JSONObject
 import org.junit.jupiter.api.Test
 import top.kagerou.langbao.entity.ResultCode
 import top.kagerou.langbao.entity.ResultResponse
@@ -8,6 +12,7 @@ import top.kagerou.langbao.entity.SystemInformation
 import top.kagerou.langbao.util.HttpClientUtil
 import java.io.BufferedReader
 import java.io.File
+import java.io.IOException
 
 
 //@SpringBootTest()
@@ -40,9 +45,9 @@ class LangbaoApplicationTests {
 
 	@Test
 	fun testShell(){
-		val mutableListOf = mutableListOf("git", "-v")
+		val mutableListOf = mutableListOf("cmd.exe","/c","ping", "www.baidu.com")
 		val pb: ProcessBuilder = ProcessBuilder(mutableListOf)
-		pb.directory(File("C:\\Users\\93031\\AppData\\Local\\Programs\\Git\\usr\\bin"))
+//		pb.directory(File("C:\\Users\\93031\\AppData\\Local\\Programs\\Git\\usr\\bin"))
 		val its = pb.start().inputStream.bufferedReader().use(BufferedReader::readText)
 		println("its:$its")
 	}
@@ -65,14 +70,22 @@ class LangbaoApplicationTests {
 
 	@Test
 	fun getSteamVersion(){
-		val url: String = "https://steamcommunity-a.akamaihd.net/news/newsforapp/v0002/"
-		val param = mutableMapOf<String,String>()
-		param["appid"] = "322330"
-		param["count"] = "5"
-		param["format"] = "json"
-		param["maxlength"] = "10"
-		val headers: Headers = Headers.headersOf("user-agent","Valve/Steam HTTP Client 1.0 (0)","Host","steamcommunity-a.akamaihd.net","Accept","text/html,*/*;q=0.9","accept-encoding", "gzip,identity,*;q=0","accept-charset", "ISO-8859-1,utf-8,*;q=0.7")
-		val respond = HttpClientUtil.getHttpRespondToString(url, param, headers)
-		println(respond)
+		val url: String = "https://steamcommunity-a.akamaihd.net/news/newsforapp/v0002"
+		val params = mutableMapOf<String,String>()
+		params["appid"] = "322330"
+		params["count"] = "10"
+		params["format"] = "json"
+		params["maxlength"] = "10"
+		val headers: Headers = Headers.headersOf("user-agent","Valve/Steam HTTP Client 1.0 (0)","Host","steamcommunity-a.akamaihd.net","Accept","text/html,*/*;q=0.9","accept-charset", "ISO-8859-1,utf-8,*;q=0.7")
+		val respond = HttpClientUtil.getHttpRespondToString(url, params, headers)
+		val newsItems = com.alibaba.fastjson2.JSONObject.parseObject(respond).getJSONObject("appnews").getJSONArray("newsitems")
+		for (i in 0..< newsItems.size){
+			val title = newsItems.getJSONObject(i).getString("title")
+			if (title.contains("Hotfix")) {
+				println(title)
+				break
+			}
+		}
+		println("链接：$url")
 	}
 }

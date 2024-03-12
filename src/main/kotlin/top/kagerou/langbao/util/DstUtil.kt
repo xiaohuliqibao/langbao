@@ -15,13 +15,13 @@ object DstUtil {
      */
     fun getSteamVersion(): String {
         var version = String()
-        val url: String = "https://steamcommunity-a.akamaihd.net/news/newsforapp/v0002/"
+        val url: String = "https://steamcommunity-a.akamaihd.net/news/newsforapp/v0002"
         val params = mutableMapOf<String,String>()
         params["appid"] = "322330"
         params["count"] = "5"
         params["format"] = "json"
         params["maxlength"] = "10"
-        val headers: Headers = Headers.headersOf("user-agent","Valve/Steam HTTP Client 1.0 (0)","Host","steamcommunity-a.akamaihd.net","Accept","text/html,*/*;q=0.9","accept-encoding", "gzip,identity,*;q=0","accept-charset", "ISO-8859-1,utf-8,*;q=0.7")
+        val headers: Headers = Headers.headersOf("user-agent","Valve/Steam HTTP Client 1.0 (0)","Host","steamcommunity-a.akamaihd.net","Accept","text/html,*/*;q=0.9","accept-charset", "ISO-8859-1,utf-8,*;q=0.7")
         // 构建 客户端
         val client = OkHttpClient()
         // 构建 HttpUrl并传入请求参数
@@ -59,5 +59,13 @@ object DstUtil {
      */
 
     fun getServerVersion(): String =  FileUtils.readCustomerLine(versionFilePath,1,1)
+
+    fun stopMaster() {
+        ShellUtil.execShell(listOf(DstConstant.STOP_MASTER_CMD) )
+    }
+
+    fun stopCave() {
+        ShellUtil.execShell(listOf(DstConstant.STOP_CAVES_CMD) )
+    }
 
 }

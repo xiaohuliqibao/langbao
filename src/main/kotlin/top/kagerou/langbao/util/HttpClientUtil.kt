@@ -38,9 +38,7 @@ object HttpClientUtil {
         try {
             val response = client.newCall(request).execute()
             responseStr =  response.body!!.string()
-            if(response.body != null) {
-                response.body!!.close();
-            }
+            response.body!!.close();
         }catch (e: IOException){
             return "Get Request Error!"
         }
@@ -72,9 +70,7 @@ object HttpClientUtil {
         try {
             val response = client.newCall(request).execute()
             responseStr =  response.body!!.string()
-            if(response.body != null) {
-                response.body!!.close();
-            }
+            response.body!!.close();
         }catch (e: IOException){
             return "Post Request Error!"
         }
@@ -108,9 +104,7 @@ object HttpClientUtil {
         try {
             val response = client.newCall(request).execute()
             return response.body!!.string()
-            if(response.body != null) {
-                response.body!!.close();
-            }
+            response.body!!.close();
         }catch (_: IOException){
         }
         return "Delete Request Error!"
